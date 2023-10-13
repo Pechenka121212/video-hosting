@@ -1,3 +1,5 @@
+using video_hosting.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,4 +24,9 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+//ApplicationContext databaseConnection = new ApplicationContext();
+//databaseConnection.Videos.Add(new video_hosting.Models.Video() { Name = "Белый властелин", Categories = "Black men, Domination, More cum", FileName = "BBC", PathToFile = "C:/Windiws", Description = "Черный властелин жаждет встречи с тобой", PuthToThumbnail="C:/Linux" });
+//databaseConnection.SaveChanges();
+
 app.Run();
+

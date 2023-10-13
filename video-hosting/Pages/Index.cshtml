@@ -1,7 +1,9 @@
 ﻿@page
 @model IndexModel
+@using video_hosting.Services
 @{
     ViewData["Title"] = "Home page";
+    ApplicationContext databaseConnection = new ApplicationContext();
 }
 
-<div class="container"></div>
+<div class="container row">@Html.Raw(RenderingService.RenderAllThumbnail(databaseConnection).Content)</div>
