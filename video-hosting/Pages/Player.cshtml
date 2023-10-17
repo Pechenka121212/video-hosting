@@ -1,0 +1,13 @@
+﻿@page
+@model PlayerModel
+@using video_hosting.Services
+@{
+    ViewData["Title"] = "See all in this world";
+}
+
+<div class="row">
+    <video class="col-12" src="@Model.PathToVideoFile" controls="controls" poster="@Model.PathToThumbnail">
+        Тег video не поддерживается вашим браузером. 
+        <a href="@Model.PathToVideoFile">Скачайте видео</a>.
+    </video>
+</div>

@@ -7,10 +7,10 @@ namespace video_hosting.Services
 {
     public class RenderingService
     {
-        private static string RenderCard(string videoName, string pathToImg) 
+        private static string RenderCard(string pathToVideoFile, string videoFileName, string videoName, string pathToImg) 
         {
             string result =
-                "<a class=\"d-block col-3 link-opacity-50-hover\" style=\"text-decoration: none\" href=\"#\">" +
+                $"<a class=\"d-block col-3 link-opacity-50-hover\" style=\"text-decoration: none\" href=\"/Player?pathToVideoFile={pathToVideoFile + videoFileName}&pathToThumbnail={pathToImg}\">" +
                     "<div class=\"bg-secondary\">" +
                         "<div class=\"ratio ratio-16x9\">" +
                             $"<img class= \"img-fluid mx-auto d-block\" src=\"{pathToImg}\">" +
@@ -29,7 +29,7 @@ namespace video_hosting.Services
 
             foreach (Video video in videos)
             {
-                result += RenderCard(video.Name, video.PuthToThumbnail);
+                result += RenderCard(video.PathToFile, video.FileName, video.Name, video.PuthToThumbnail);
             }
 
             return new ContentResult

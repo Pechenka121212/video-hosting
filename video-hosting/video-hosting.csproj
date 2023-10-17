@@ -15,4 +15,10 @@
     <PackageReference Include="bootstrap" Version="5.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Pages\I.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Pages\I.cshtml.cs" />
+  </ItemGroup>
 </Project>
