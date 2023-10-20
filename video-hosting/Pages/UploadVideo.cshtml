@@ -1,0 +1,44 @@
+﻿@page
+@model UploadVideoModel
+@using video_hosting.Services
+@{
+    ViewData["Title"] = "Upload your videos";
+    ApplicationContext databaseConnection = new ApplicationContext();
+}
+
+<form method="POST" class="row g-3" enctype="multipart/form-data">
+    <div class="col-12">
+        <label for="videoName" class="form-label">Название видео</label>
+        <input type="text" class="form-control" id="videoName" name=@Model.elementNames[0] value="" required>
+    </div>
+    <div class="col-12">
+        <label for="videoCategory" class="form-label">Категория</label>
+        <select class="form-select" id="videoCategory" name=@Model.elementNames[1] required>
+            <option selected disabled value="">Выберите категорию</option>
+            @Html.Raw(RenderingService.RenderAllCategoryOptions(databaseConnection).Content)
+        </select>
+    </div>
+    <div class="col-12">
+        <label for="uploadThumbnail" class="form-label">Превью для видео</label>
+        <input type="file" class="form-control" id="uploadThumbnail" asp-for="UploadThumbnail" accept="image/png,image/jpeg" required>
+    </div>
+    <div class="col-12">
+        <label for="uploadVideo" class="form-label">Видеофайл (размер не должен превышать 500 мб.)</label>
+        <input type="file" class="form-control" id="uploadVideo" asp-for="UploadVideo" accept="video/mp4" required>
+    </div>
+    <div class="input-group col-12">
+        <span class="input-group-text">Описание видео</span>
+        <textarea class="form-control" name=@Model.elementNames[2]></textarea>
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="acceptUserAgreement" required>
+            <label class="form-check-label" for="acceptUserAgreement">
+                Я прочитал пользовательское соглашение и принимаю все условия
+            </label>
+        </div>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Загрузить видео</button>
+    </div>
+</form>

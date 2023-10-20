@@ -29,7 +29,24 @@ namespace video_hosting.Services
 
             foreach (Video video in videos)
             {
-                result += RenderCard(video.PathToFile, video.FileName, video.Name, video.PuthToThumbnail);
+                result += RenderCard(video.PathToFile, video.FileName, video.Name, video.PathToThumbnail);
+            }
+
+            return new ContentResult
+            {
+                Content = result,
+                ContentType = "text/html"
+            };
+        }
+
+        public static ContentResult RenderAllCategoryOptions(ApplicationContext database)
+        {
+            List<Category> categories = CategoryService.GetAllCategories(database);
+            string result = "";
+
+            foreach (Category category in categories)
+            {
+                result += $"<option>{category.Name}</option>";
             }
 
             return new ContentResult
