@@ -5,8 +5,10 @@ namespace video_hosting.Services
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<Video> Videos => Set<Video>(); 
-        
+        public DbSet<Video> Videos => Set<Video>();
+
+        public DbSet<Category> Categories => Set<Category>();
+
         public ApplicationContext() => Database.EnsureCreated();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

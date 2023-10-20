@@ -4,16 +4,16 @@
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
         
-        public string FileName { get; set; }
+        public string FileName { get; set; } = null!;
         
-        public string PathToFile { get; set; }
+        public string PathToFile { get; set; } = null!;
 
-        public string Categories { get; set; }
+        public Category Category { get; set; } = null!;
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string PuthToThumbnail { get; set; }
+        public string PathToThumbnail { get; set; } = null!;
     }
 }
