@@ -9,6 +9,8 @@ namespace video_hosting.Services
 
         public DbSet<Category> Categories => Set<Category>();
 
+        public DbSet<UserProfile> UserProfiles => Set<UserProfile>();
+
         public ApplicationContext() => Database.EnsureCreated();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

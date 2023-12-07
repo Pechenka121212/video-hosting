@@ -1,0 +1,38 @@
+﻿@page
+@using video_hosting.Services
+@using video_hosting.Models
+@model video_hosting.Pages.UserProfileModel
+@{
+    ViewData["Title"] = "Profile";
+    ApplicationContext databaseConnection = new ApplicationContext();
+    int id = 12345;
+    UserProfile user = UserProfileService.GetProfile(databaseConnection, id);
+}
+<div class="container row">
+    <div class="container col-2 border-end border-light-subtle">
+        <div class="ratio ratio-1x1">
+            <img src="@user.PathToAvatar" class="img-fluid mx-auto border border-light-subtle d-block">
+        </div>
+        <p class="mt-4"><b>nick:</b>@user.Nickname</p>
+        <p><b>gender: </b>@user.Gender</p>
+        <p><b>status: </b>@user.Status</p>
+        <p><b>role: </b>@user.Role</p>
+        <p><b>likes: </b>@user.Likes</p>
+        <p><b>dislikes: </b>@user.Dislikes</p>
+        <p><b>comments: </b>@user.Comments</p>
+        <p><b>last login date: </b>@user.LastLoginDate</p>
+        <p><b>date of registration: </b>@user.DateOfRegistration<p>
+    </div>
+    <nav class="col ps-0">
+        <div class="justify-content-center nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link" id="nav-loaded-tab" data-bs-toggle="tab" data-bs-target="#nav-loaded" type="button" role="tab" aria-controls="nav-loaded" aria-selected="false">Loaded</button>
+            <button class="nav-link active" id="nav-favorites-tab" data-bs-toggle="tab" data-bs-target="#nav-favorites" type="button" role="tab" aria-controls="nav-favorites" aria-selected="true">Favorites</button>
+            <button class="nav-link" id="nav-subscriptions-tab" data-bs-toggle="tab" data-bs-target="#nav-subscriptions" type="button" role="tab" aria-controls="nav-subscriptions" aria-selected="false">Subscriptions</button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="container row tab-pane fade active show" id="nav-loaded" role="tabpanel" aria-labelledby="nav-loaded-tab"/>
+        <div class="container row tab-pane fade active show" id="nav-favorites" role="tabpanel" aria-labelledby="nav-favorites-tab"/>
+        <div class="container row tab-pane fade active show" id="nav-subscriptions" role="tabpanel" aria-labelledby="nav-subscriptions-tab"/>
+    </div>
+</div>
